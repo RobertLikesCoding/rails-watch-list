@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid justify-content-between">
+    <span class="navbar-brand">Movie Radar</span>
+    <div class="navbar-nav">
+      <%= link_to "My lists", lists_path, class: "nav-link" %>
+      <%= link_to "New List", new_list_path, class: "nav-link" %>
+    </div>
+  </div>
+</nav>
+
+<header class="container-fluid hero-banner justify-content-center align-items-center">
+  <h1>All your movies in one place</h1>
+</header>
+<div class="container my-4">
+  <div class="row">
+    <% @lists.each do |list| %>
+    
+      <%= link_to list_path(list) do %>
+      <div class="col-3 container justify-content-center align-items-center mr-3">
+        <h2><%= list.name %></h2>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
