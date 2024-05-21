@@ -302,6 +302,7 @@ DEPENDENCIES
   bootstrap (~> 5.2)
   capybara
   debug
+  diff-lcs (~> 1.5.1)
   error_highlight (>= 0.4.0)
   font-awesome-sass (~> 6.1)
   importmap-rails
