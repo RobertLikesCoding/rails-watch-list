@@ -1,36 +1,31 @@
 class BookmarksController < ApplicationController
   def new
+    @list = List.find(params[:list_id])
     @bookmark = Bookmark.new
+    @movies = Movie.all
   end
 
   def create
-    # maybe needs to move to :new
-    @bookmark = Bookmark.new(bookmark_params)
-    @movies = Movie.all
-
-
-    # @movie = Movie.find(params[:movie_id])
-    # @list = Movie.find(params[:list_id])
-    # @bookmark.movie_id = @movie
-    # @bookmark.list_id = @list
-
+    @list = List.find(params[:list_id])
+    @bookmark = @list.bookmarks.new(bookmark_params)
     if @bookmark.save
-      redirect_to @bookmark
+      redirect_to @list, notice: 'Movie was successfully added to the list.'
     else
+      @movies = Movie.all
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @bookmark = bookmark.find(params[:id])
+    @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
-    redirect_to :index
+    redirect_to list_path(@bookmark), status: :see_other
   end
 
   private
 
   def bookmark_params
-    params.require(:bookmark).permit(:comment, :movie_id, :list_id)
+    params.require(:bookmark).permit(:comment, :movie_id)
   end
 
 end

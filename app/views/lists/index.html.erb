@@ -3,7 +3,6 @@
     <span class="navbar-brand">Movie Radar</span>
     <div class="navbar-nav">
       <%= link_to "My lists", lists_path, class: "nav-link" %>
-      <%= link_to "New List", new_list_path, class: "nav-link" %>
     </div>
   </div>
 </nav>
@@ -11,14 +10,19 @@
 <header class="container-fluid hero-banner justify-content-center align-items-center">
   <h1>All your movies in one place</h1>
 </header>
+
 <div class="container my-4">
-  <div class="row">
+  <div class="d-flex justify-content-between mb-5">
+    <h2>My Lists</h2>
+    <%= render 'lists/modal', list: @list %>
+    <button type="button" class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Create New List
+    </button>
+  </div>
+  <div class="row gap-4 justify-content-center">
     <% @lists.each do |list| %>
-    
-      <%= link_to list_path(list) do %>
-      <div class="col-3 container justify-content-center align-items-center mr-3">
-        <h2><%= list.name %></h2>
-      </div>
+      <%= link_to list_path(list), class: "my-button col-3 d-flex rounded justify-content-center align-items-center mr-3 text-white" do %>
+        <h3 class="my-2"><%= list.name %></h3>
       <% end %>
     <% end %>
   </div>

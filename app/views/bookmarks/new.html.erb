@@ -1,0 +1,13 @@
+<%= simple_form_for([@list, @bookmark]) do |f| %>
+  <div class="form-group">
+    <%= f.input :movie_id, collection: @movies, label: 'Select a movie', prompt: 'Choose a movie' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :comment %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, 'Add Movie', class: 'btn btn-primary' %>
+  </div>
+<% end %>

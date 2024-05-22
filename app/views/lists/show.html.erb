@@ -1,5 +1,46 @@
-<h1>This is the show page</h1>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid justify-content-between">
+    <span class="navbar-brand">Movie Radar</span>
+    <div class="navbar-nav">
+      <%= link_to "My lists", lists_path, class: "nav-link" %>
+      <%= link_to "New List", new_list_path, class: "nav-link" %>
+    </div>
+  </div>
+</nav>
 
-<p><%= @list.name %></p>
+<header class="container-fluid hero-banner justify-content-center align-items-center">
+  <h1><%= @list.name %></h1>
+</header>
 
-<%= link_to "Go back", lists_path %>
+<div class="container">
+  <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-success text-white" %>
+  <div class="row my-3">
+
+        <% @list.bookmarks.each do |item|  %>
+          <div class="col-3">
+            <div class="card" style="width: 20rem;">
+              <img src="<%= item.movie.poster_url %>" class="card-img-top" alt="movie poster">
+              <div class="card-body d-flex justify-content-between flex-column gap-4">
+                <div>
+                  <h5 class="card-title"><%= item.movie.title %></h5>
+                  <p class="card-text"><%= item.movie.overview %></p>
+                </div>
+                <div>
+                  <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+                  <span><%= item.movie.rating %>/10</span>
+                  <%= link_to "Delete", bookmark_path(item) ,data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+                  <div class="card-footer mt-2">
+                    <p>"<%= item.comment %>"</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+
+  </div>
+
+
+  <%= link_to "Go back", lists_path, class: "text-decoration-underline py-3 fs-6" %>
+</div>

@@ -1,15 +1,18 @@
 .hero-banner {
-  background-image: asset-url("pexels-pixabay-33129.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), asset-url("tyson-moultrie-BQTHOGNHo08-unsplash.jpg");
   height: 500px;
   background-position: center;
   background-repeat: none;
-  background-size: cover;
+  background-size:auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 2rem;
 
   h1 {
     font-size: 5rem;
     font-weight: bold;
+    color: white;
+    text-shadow: 5px 5px black;
   }
 }
