@@ -10,11 +10,11 @@
       Create New List
     </button>
   </div>
-<div class="row gap-4 justify-content-center">
+<div class="row gap-4 justify-content-evenly">
     <% @lists.each do |list| %>
       <% if list.thumbnail.attached? %>
         <% bg_image_url = cl_image_path(list.thumbnail.key) %>
-        <%= link_to list_path(list), class: "my-button col-8 d-flex rounded justify-content-center align-items-center mr-3 text-white", style: "background-image: url('#{bg_image_url}');" do %>
+        <%= link_to list_path(list), class: "my-button col-2 d-flex rounded justify-content-center align-items-center mr-3 text-white", style: "background-image: url('#{bg_image_url}');" do %>
           <h3 class="my-2"><%= list.name %></h3>
         <% end %>
       <% else %>

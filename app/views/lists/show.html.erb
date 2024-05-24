@@ -31,7 +31,6 @@
 <div class="container">
   <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-success" %>
   <div class="row my-3">
-
         <% @list.bookmarks.each do |item|  %>
           <div class="col-md-4 mb-4">
             <div class="card h-100">
@@ -53,8 +52,18 @@
             </div>
           </div>
         <% end %>
+  </div>
 
+  <h2>Comments</h2>
 
+  <div class="border rounded p-4">
+    <%# COMMENT %>
+    <div class="d-flex gap-2">
+      <i class="fa-solid fa-quote-right"></i>
+      <p>Comment written here</p>
+    </div>
+
+    <% simple_form_for  %>
   </div>
 
 
