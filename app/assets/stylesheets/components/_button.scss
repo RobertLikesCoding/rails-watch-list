@@ -1,4 +1,10 @@
 .my-button {
   background-color: black;
   box-shadow: 5px 5px 10px gray;
+  height: 100px;
+
+  h3 {
+    text-shadow: 2px 2px 2px black;
+    font-weight: bold;
+  }
 }

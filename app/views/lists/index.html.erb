@@ -1,4 +1,4 @@
-<header class="container-fluid hero-banner justify-content-center align-items-center">
+<header class="container-fluid hero-banner justify-content-center align-items-center", style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(<%= asset_path 'home_hero.jpg' %>)">
   <h1>All your movies in one place</h1>
 </header>
 
@@ -10,11 +10,20 @@
       Create New List
     </button>
   </div>
-  <div class="row gap-4 justify-content-center">
+<div class="row gap-4 justify-content-center">
     <% @lists.each do |list| %>
-      <%= link_to list_path(list), class: "my-button col-3 d-flex rounded justify-content-center align-items-center mr-3 text-white", style: "height: 100" do %>
-        <h3 class="my-2"><%= list.name %></h3>
+      <% if list.thumbnail.attached? %>
+        <% bg_image_url = cl_image_path(list.thumbnail.key) %>
+        <%= link_to list_path(list), class: "my-button col-8 d-flex rounded justify-content-center align-items-center mr-3 text-white", style: "background-image: url('#{bg_image_url}');" do %>
+          <h3 class="my-2"><%= list.name %></h3>
+        <% end %>
+      <% else %>
+        <%= link_to list_path(list), class: "my-button col-8 d-flex rounded justify-content-center align-items-center mr-3 text-white" do %>
+          <h3 class="my-2"><%= list.name %></h3>
+        <% end %>
       <% end %>
     <% end %>
   </div>
+
+
 </div>
