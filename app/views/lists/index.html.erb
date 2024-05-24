@@ -12,7 +12,7 @@
   </div>
   <div class="row gap-4 justify-content-center">
     <% @lists.each do |list| %>
-      <%= link_to list_path(list), class: "my-button col-3 d-flex rounded justify-content-center align-items-center mr-3 text-white" do %>
+      <%= link_to list_path(list), class: "my-button col-3 d-flex rounded justify-content-center align-items-center mr-3 text-white", style: "height: 100" do %>
         <h3 class="my-2"><%= list.name %></h3>
       <% end %>
     <% end %>

@@ -9,7 +9,6 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @movies = @list.movies
     @bookmark = @list.bookmarks
-    # how can I display the bookmark.comment?
   end
 
   def new
