@@ -60,7 +60,7 @@
   <div class="row">
 
   <div class="col-6">
-    <% @list.comments.each do |comment| %>
+    <% @list.comments.reverse_each do |comment| %>
     <div class="comment gap-2 p-2 mb-2">
       <% rating_count = comment.rating %>
         <% if rating_count.present? %>
@@ -68,7 +68,10 @@
             <span class="star selected">★</span>
           <% end %>
         <% end %>
-      <p><%= comment.content %></p>
+      <div class="d-flex justify-content-between">
+        <p><%= comment.content %></p>
+        <%= link_to "", list_comment_path(@list, comment), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn-close" %>
+      </div>
     </div>
     <hr class="hr">
     <% end %>

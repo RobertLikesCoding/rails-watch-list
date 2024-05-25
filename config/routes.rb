@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :lists, only: [:index, :new, :show, :create, :update] do
     resources :bookmarks, only: [:new, :create]
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
   end
 
   # resources :movies, only: [:index, :show]

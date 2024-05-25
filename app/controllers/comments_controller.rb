@@ -11,6 +11,13 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @list = List.find(params[:list_id])
+    @comment = @list.comments.find(params[:id])
+    @comment.delete
+    redirect_to list_path(@list)
+  end
+
   private
 
   def comment_params
