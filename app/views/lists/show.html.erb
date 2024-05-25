@@ -1,9 +1,9 @@
 <% if @list.thumbnail.key? %>
-  <header class="container-fluid hero-banner justify-content-center align-items-center", style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(<%= cl_image_path(@list.thumbnail.key) %>)">
+  <header class="container-fluid hero-banner justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(<%= cl_image_path(@list.thumbnail.key) %>)">
     <h1><%= @list.name %></h1>
   </header>
 <% else %>
-  <header class="container-fluid hero-banner justify-content-center align-items-center", style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))">
+  <header class="container-fluid hero-banner justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))">
     <h1><%= @list.name %></h1>
   </header>
 <% end %>
@@ -61,8 +61,13 @@
 
   <div class="col-6">
     <% @list.comments.each do |comment| %>
-    <div class="comment d-flex gap-2 p-2 mb-2">
-      <i class="fa-solid fa-quote-right"></i>
+    <div class="comment gap-2 p-2 mb-2">
+      <% rating_count = comment.rating %>
+        <% if rating_count.present? %>
+          <% rating_count.times do %>
+            <span class="star selected">★</span>
+          <% end %>
+        <% end %>
       <p><%= comment.content %></p>
     </div>
     <hr class="hr">
@@ -74,14 +79,25 @@
       <div class="form-group">
         <%= f.input :content, as: :text, label: "Add a comment", input_html: { class: 'form-control' } %>
       </div>
+
+      <div class="form-group rating">
+        <label>Rating</label>
+        <div class="star-rating">
+          <span class="star" data-value="1">&#9733;</span>
+          <span class="star" data-value="2">&#9733;</span>
+          <span class="star" data-value="3">&#9733;</span>
+          <span class="star" data-value="4">&#9733;</span>
+          <span class="star" data-value="5">&#9733;</span>
+        </div>
+        <%= f.hidden_field :rating, id: 'rating-input' %>
+      </div>
+
       <div class="form-group">
         <%= f.button :submit, "Post Comment", class: "btn btn-success" %>
       </div>
     <% end %>
   </div>
   </div>
-
-
 
   <%= link_to "Go back", lists_path, class: "text-decoration-underline py-3 fs-6" %>
 </div>
