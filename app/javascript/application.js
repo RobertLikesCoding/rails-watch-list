@@ -9,6 +9,7 @@ import "@popperjs/core"
 
 document.addEventListener('DOMContentLoaded', () => {
   const stars = document.querySelectorAll('.star-rating .star');
+  console.log("Hello World")
   const ratingInput = document.getElementById('rating-input');
 
   stars.forEach((star, index) => {
@@ -34,4 +35,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
